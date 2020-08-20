@@ -1,0 +1,27 @@
+name: Terraform AWS deployment of Hazelcast cluster and management center
+
+on:
+  push:
+    branches: github-actions
+
+jobs:
+  build:
+    defaults:
+      run:
+        shell: bash
+    runs-on: ubuntu-latest
+    steps:
+
+      - run: |
+          pwd
+          ls -al
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          path: terraform
+
+      - name : Set-up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.12.35
